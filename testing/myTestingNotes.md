@@ -22,12 +22,10 @@
     
     create-react-app testing
     
-# TESTING    
+# TESTING
 ### To init with testing.
 - first, change te App.js file, only leave a one div, and inside write some text
 - then, go to App.test.js file, and write code to verify if the text added in App.js file exist, this is the first test.
-
-
 
 To execut the test use the comand.
 
