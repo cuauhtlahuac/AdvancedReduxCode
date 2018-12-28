@@ -87,11 +87,32 @@ To files are important files:
         //and then that contain a text it must be exactly the same
         //that wrote in the commentbox component
           expect(div.innerHTML).toContain('Comment Box')
-
+        //'expect' function is a global function like 'it' function. The first argument must be an object,
+        //element or werever that we need to inspect inside of it. check diagram 10_expectFunction.PNG
+        //Then write the match statement, in this case is toContain
         //Line of code below is going to find app component and remove app component entirely
         //Is a clean up after the test run, if not clean, the component can run during test and can affect the performance of test
           ReactDOM.unmountComponentAtNode(div);
         });
+
+### Finding the best aproach
+        //Based in the next of code
+        expect(div.innerHTML).toContain('Comment Box')
+- In summary, the test must be check one time for any element, in the code above we check two things and it would beeing a mess, because when te app grows, i will be must dificult to check the right information
+- We going to install a library created by RBB to do the test a little bit easier because enzyme was created for react.
+
+        npm install --save enzyme enzyme-adapter-react-16(in this seccion write the react version that you have, only the first num)
+        
+- While the package is installing we can start to create a file inside of src directory, with the name (is important that has to be exactly the name written) setupTests.js inside of this file put the next code below:
+
+        import Enzyme from "enzime";
+        //put the react version at the end
+        import Adapter from "enzime-adapter-react-16";
+
+        Enzyme.configure({ adapter: new Adapter() });
+        
+- setupTests.js will be the first code that the "jest" library going to execute        
+
 
 ### Backup to serviceWorker.js code in the src directory.
 
