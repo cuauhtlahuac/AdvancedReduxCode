@@ -59,9 +59,11 @@ To files are important files:
     - For example: here the purpose of App Component, etc.
 3. Write a test to verify each part does what you expect
 
+### Writing first test
+- specify the div element will render the app
+- to run the test write in terminal "npm run tes"
+- **My firts test code with notes**
 
-___
-### Test code with notes
         import React from 'react';
         import ReactDOM from 'react-dom';
         import App from './App';
@@ -78,10 +80,13 @@ ___
           const div = document.createElement('div');
         // React dom render an app component in a JSDOM inside of that the render
           ReactDOM.render(<App />, div);
-        // Look inside the div
-        // and checks to see if the CommentBox is in there  
-        console.log(div.innerHTML)
-        //  expect(div.innerHTML).toContain('Hi there!')
+        // Print in console and check if the CommentBox is in there
+        //console.log(div.innerHTML)
+        //Once you cheked confirm if the element contain the text Comment Box inside, 
+        //write a expect function, first take the contain inside of the div 
+        //and then that contain a text it must be exactly the same
+        //that wrote in the commentbox component
+          expect(div.innerHTML).toContain('Comment Box')
 
         //Line of code below is going to find app component and remove app component entirely
         //Is a clean up after the test run, if not clean, the component can run during test and can affect the performance of test
