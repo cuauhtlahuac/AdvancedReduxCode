@@ -68,35 +68,35 @@ To files are important files:
         import ReactDOM from 'react-dom';
         import App from './App';
 
-        //"it" is a global function, it will callit any time when create a test
-        //Don't need to require or import because is GLOBAL
-        //The first argument of it function are to be the same, the first is a description, type string
-        //The second argument is the logic, the body to execute
-        //Don't need to specify the name if the file to test, because the file is in this case App.js and by default it already import the file.
+            //"it" is a global function, it will callit any time when create a test
+            //Don't need to require or import because is GLOBAL
+            //The first argument of it function are to be the same, the first is a description, type string
+            //The second argument is the logic, the body to execute
+            //Don't need to specify the name if the file to test, because the file is in this case App.js and by default it already import the file.
 
-        //The test use JEST and it runs in the terminal, Jest simule the browser 
+            //The test use JEST and it runs in the terminal, Jest simule the browser 
         it('renders without crashing', () => {
-        // Create the div to simulate a div, because the test run in terminal not in browser it's a fake div
+            // Create the div to simulate a div, because the test run in terminal not in browser it's a fake div
           const div = document.createElement('div');
-        // React dom render an app component in a JSDOM inside of that the render
+            // React dom render an app component in a JSDOM inside of that the render
           ReactDOM.render(<App />, div);
-        // Print in console and check if the CommentBox is in there
-        //console.log(div.innerHTML)
-        //Once you cheked confirm if the element contain the text Comment Box inside, 
-        //write a expect function, first take the contain inside of the div 
-        //and then that contain a text it must be exactly the same
-        //that wrote in the commentbox component
+            // Print in console and check if the CommentBox is in there
+            //console.log(div.innerHTML)
+            //Once you cheked confirm if the element contain the text Comment Box inside, 
+            //write a expect function, first take the contain inside of the div 
+            //and then that contain a text it must be exactly the same
+            //that wrote in the commentbox component
           expect(div.innerHTML).toContain('Comment Box')
-        //'expect' function is a global function like 'it' function. The first argument must be an object,
-        //element or werever that we need to inspect inside of it. check diagram 10_expectFunction.PNG
-        //Then write the match statement, in this case is toContain
-        //Line of code below is going to find app component and remove app component entirely
-        //Is a clean up after the test run, if not clean, the component can run during test and can affect the performance of test
+            //'expect' function is a global function like 'it' function. The first argument must be an object,
+            //element or werever that we need to inspect inside of it. check diagram 10_expectFunction.PNG
+            //Then write the match statement, in this case is toContain
+            //Line of code below is going to find app component and remove app component entirely
+            //Is a clean up after the test run, if not clean, the component can run during test and can affect the performance of test
           ReactDOM.unmountComponentAtNode(div);
         });
 
 ### Finding the best aproach
-        //Based in the next of code
+        //Based in the next code
         expect(div.innerHTML).toContain('Comment Box')
 - In summary, the test must be check one time for any element, in the code above we check two things and it would beeing a mess, because when te app grows, i will be must dificult to check the right information
 - We going to install a library created by RBB to do the test a little bit easier because enzyme was created for react.
@@ -111,7 +111,7 @@ To files are important files:
 
         Enzyme.configure({ adapter: new Adapter() });
         
-- setupTests.js will be the first code that the "jest" library going to execute        
+- setupTests.js will be the first code that the "jest" library going to execute
 
 
 ### Backup to serviceWorker.js code in the src directory.
