@@ -98,11 +98,11 @@ To files are important files:
 ### Finding the best aproach
         //Based in the next code
         expect(div.innerHTML).toContain('Comment Box')
-- In summary, the test must be check one time for any element, in the code above we check two things and it would beeing a mess, because when te app grows, i will be must dificult to check the right information
+- In summary, the test must be check one time for any element, in the code above we check two things and it would beeing a mess, because when te app grows, i will be must dificult to check the right information.
 - We going to install a library created by RBB to do the test a little bit easier because enzyme was created for react.
 
         npm install --save enzyme enzyme-adapter-react-16(in this seccion write the react version that you have, only the first num)
-        
+- Finding Documentation of ENZYME in (airbnb.io/enzyme)[https://airbnb.io/enzyme/]
 - While the package is installing we can start to create a file inside of src directory, with the name (is important that has to be exactly the name written) setupTests.js inside of this file put the next code below:
 
         import Enzyme from "enzime";
@@ -113,8 +113,7 @@ To files are important files:
         
 - setupTests.js will be the first code that the "jest" library going to execute
 - We gonna use 3 different methods to create instances of our components and then writing expectentions around them. The three ways are static render, shallow render and full DOM render.
-
-    -Static render: It gonna take our component, it gonna render the component, take all the HTML generated and then return to us an object that just contain that html.Is a static HTML, we can't interact with an input or clicks. It allows us to generate assertions about the HTML generated.
+    - Static render: It gonna take our component, it gonna render the component, take all the HTML generated and then return to us an object that just contain that html.Is a static HTML, we can't interact with an input or clicks. It allows us to generate assertions about the HTML generated.
     - Shallow render: Take that component and render that component and none of his children. One example might be App component, we can't test his children component like box an list components. SHALOW RENDER IS USED WHEN WE WANT TO TEST ONE COMPONENT BY ITSELF IN ISOLATION.
       example util for our test: https://airbnb.io/enzyme/docs/api/ShallowWrapper/filter.html
         
@@ -122,11 +121,42 @@ To files are important files:
                 expect(wrapper.find('.foo').filter('.bar')).to.have.lengthOf(1);
         
      - Full DOM render: This takes and instance of a component rendersthat component and all of it's children. It then returns an object back to us. It can simulate click events or entering text or otherswise interacts with that component. It's essencially a full copie if our entire application and then somehow test interactions with the entire.
-        
-Finding Documentation of ENZYME in airbnb.io/enzyme
+
+### Finally the Refactor:
+
+- We gonna delete the test logic before writing, and react DOM import. Then import shallow enzime and so import commentBox.
+- Write inside the test logic first save the App component in a constant using the shallow method, then write the expectation function ("expect()") inside write the thing that we expect.
+- we then use find method, that returns an array with all the component that we want to find.
+
+- Finally we expect only one CommentBox component so we use the lenght method and toEqual() to make shure of that. 
+- The code looks like this below:
+
+```javascript
+import React from "react";
+import { shallow } from "enzyme";
+import App from "../App";
+import CommentBox from "../CommentBox";
+it("shows a comment box", () => {
+  const component = shallow(<App />);
+  expect(wrapped.find(CommentBox).lenght).toEqual(1);
+});
+```
+
+- After the testing pass try to make it break, like intead to say toEqual(1) say toEqual(6) and break it. 
+
+
+
+
+
+
+
+
+
+
+
 
 ### Backup to serviceWorker.js code in the src directory.
-
+```javascript
     // This optional code is used to register a service worker.
     // register() is not called by default.
 
@@ -262,4 +292,4 @@ Finding Documentation of ENZYME in airbnb.io/enzyme
         });
       }
     }
-
+```
