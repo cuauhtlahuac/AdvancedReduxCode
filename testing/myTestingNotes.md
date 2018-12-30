@@ -112,7 +112,17 @@ To files are important files:
         Enzyme.configure({ adapter: new Adapter() });
         
 - setupTests.js will be the first code that the "jest" library going to execute
-
+- We gonna use 3 different methods to create instances of our components and then writing expectentions around them. The three ways are static render, shallow render and full DOM render.
+    -Static render: It gonna take our component, it gonna render the component, take all the HTML generated and then return to us an object that just contain that html.Is a static HTML, we can't interact with an input or clicks. It allows us to generate assertions about the HTML generated.
+    - Shallow render: Take that component and render that component and none of his children. One example might be App component, we can't test his children component like box an list components. SHALOW RENDER IS USED WHEN WE WANT TO TEST ONE COMPONENT BY ITSELF IN ISOLATION.
+    - example util for our test: https://airbnb.io/enzyme/docs/api/ShallowWrapper/filter.html
+        
+                const wrapper = shallow(<MyComponent />);
+                expect(wrapper.find('.foo').filter('.bar')).to.have.lengthOf(1);
+        
+     - Full DOM render: This takes and instance of a component rendersthat component and all of it's children. It then returns an object back to us. It can simulate click events or entering text or otherswise interacts with that component. It's essencially a full copie if our entire application and then somehow test interactions with the entire.
+        
+Finding Documentation of ENZYME in airbnb.io/enzyme
 
 ### Backup to serviceWorker.js code in the src directory.
 
