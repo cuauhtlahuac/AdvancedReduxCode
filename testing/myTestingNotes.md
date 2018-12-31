@@ -109,10 +109,10 @@ To files are important files:
 import Enzyme from 'enzyme';
 //put the react version at the end
 import Adapter from 'enzyme-adapter-react-16';
-```
 
 Enzyme.configure({ adapter: new Adapter() });
-        
+```
+
 - setupTests.js will be the first code that the "jest" library going to execute
 - We gonna use 3 different methods to create instances of our components and then writing expectentions around them. The three ways are static render, shallow render and full DOM render.
     - Static render: It gonna take our component, it gonna render the component, take all the HTML generated and then return to us an object that just contain that html.Is a static HTML, we can't interact with an input or clicks. It allows us to generate assertions about the HTML generated.
@@ -146,8 +146,10 @@ it("shows a comment box", () => {
 
 - After the testing pass try to make it break, like intead to say toEqual(1) say toEqual(6) and break it.
 
+### First exercise
+- In the last section we use Shallow render that is just to render App componentbut ot any components inside of it. So even when we search the comment box component and looks like an instance of comment box, there's just a kind of placeholder or bookmark, it really doesn't exist.
 
-
+- The first exercise is to make shure if comment list is also displayed inside of  app component, the test will be write inside of the same file, then make sure that we have an instance of comment list component inside of App component.
 
 
 
