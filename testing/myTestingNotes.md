@@ -138,7 +138,7 @@ import App from "../App";
 import CommentBox from "../CommentBox";
 it("shows a comment box", () => {
   const component = shallow(<App />);
-  expect(wrapped.find(CommentBox).lenght).toEqual(1);
+  expect(component.find(CommentBox).length).toEqual(1);
 });
 ```
 
