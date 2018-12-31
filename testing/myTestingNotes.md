@@ -142,7 +142,7 @@ it("shows a comment box", () => {
 });
 ```
 
-- After the testing pass try to make it break, like intead to say toEqual(1) say toEqual(6) and break it. 
+- After the testing pass try to make it break, like intead to say toEqual(1) say toEqual(6) and break it.
 
 
 
