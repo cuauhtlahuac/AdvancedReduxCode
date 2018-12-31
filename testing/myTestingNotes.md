@@ -105,11 +105,13 @@ To files are important files:
 - Finding Documentation of ENZYME in (airbnb.io/enzyme)[https://airbnb.io/enzyme/]
 - While the package is installing we can start to create a file inside of src directory, with the name (is important that has to be exactly the name written) setupTests.js inside of this file put the next code below:
 
-        import Enzyme from "enzime";
-        //put the react version at the end
-        import Adapter from "enzime-adapter-react-16";
+```javascript
+import Enzyme from 'enzyme';
+//put the react version at the end
+import Adapter from 'enzyme-adapter-react-16';
+```
 
-        Enzyme.configure({ adapter: new Adapter() });
+Enzyme.configure({ adapter: new Adapter() });
         
 - setupTests.js will be the first code that the "jest" library going to execute
 - We gonna use 3 different methods to create instances of our components and then writing expectentions around them. The three ways are static render, shallow render and full DOM render.
