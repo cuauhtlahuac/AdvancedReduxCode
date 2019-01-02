@@ -151,8 +151,44 @@ it("shows a comment box", () => {
 
 - The first exercise is to make shure if comment list is also displayed inside of  app component, the test will be write inside of the same file, then make sure that we have an instance of comment list component inside of App component.
 
+### Absolute path import 
 
+- System of relative imports, imports statement instead absolute reference. To do this create a new file in root with the name ".env". Then inside write "NODE_PATH=src/" it's all. Next we will make a refactor. relative path =>("../") absolute path => ("components/App")
+    - The benefit is that you can now move the test and the import files around with out break it.
+    
+### Code Reuse with BeforeEach
 
+- First One last refactor: We have the same line of code in both test maked. First we gonna create a function call it beforeEach and pas an arrow function, any logic inside will be executed before any test. Good place to put some common setup project. Check the code below:
+```javascript
+beforeEach(() => {
+  const component = shallow(<App />);
+});
+```
+
+- Check the scoope because the const component is read only inside of beforeEach method. To make it readeable make above of it a let with the variable component.
+
+- In this point the code of App.test.js
+
+```javascript
+import React from "react";
+import { shallow } from "enzyme";
+import App from "components/App";
+import CommentBox from "components/CommentBox";
+import CommentList from "components/CommentList";
+
+let component;
+
+beforeEach(() => {
+  component = shallow(<App />);
+});
+it("shows a comment box", () => {
+  expect(component.find(CommentBox).length).toEqual(1);
+});
+
+it("show a comment List", () => {
+  expect(component.find(CommentList).length).toEqual(1);
+});
+```
 
 
 
