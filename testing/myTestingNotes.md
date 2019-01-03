@@ -189,11 +189,24 @@ it("show a comment List", () => {
   expect(component.find(CommentList).length).toEqual(1);
 });
 ```
+### Comment box test file
 
+- Which enzyme we need to use for our application?
+    * We gonna use **full DOM render**
+- We gonna create a new test file inside of ```__test__``` directory call CommentBox.test.js
+    * Inside of this file, write a similar code using in the previus test file.
 
+#### Full DOM rendering process explaining
+- link of Documentation of [full DOM rendering](https://airbnb.io/enzyme/docs/api/mount.html)
+- instead using shallow method we gonna use in this case "mount" that allow us to make assertions
+- We gonna use a _cleanup_ at the end of the test.
 
-
-
+#### After Each
+- After Each is an opposite of before Each.
+- It gonna run after ever single test is executed.
+- Writte below of before each
+- We gonna use a unmount method, that unmoun the component we created
+- It gonna run after it function of a test.
 
 ### Backup to serviceWorker.js code in the src directory.
 ```javascript
