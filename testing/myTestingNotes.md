@@ -208,6 +208,19 @@ it("show a comment List", () => {
 - We gonna use a unmount method, that unmoun the component we created
 - It gonna run after it function of a test.
 
+### The test for input component...
+
+- We Gonna check first if the text is saving in the estate
+- We can interact with the component+
+- Steps
+    * Find the textarea component
+    * Simulate a change event
+    * Provide a fake event object
+    * Force the component to update
+    * Assert that the text area value has changed
+
+
+
 ### Backup to serviceWorker.js code in the src directory.
 ```javascript
     // This optional code is used to register a service worker.
