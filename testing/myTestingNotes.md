@@ -235,3 +235,24 @@ it("has a text area that users can type in", () => {
   expect(wrapped.find("textarea").prop("value")).toEqual("new comment");
 });
 ```
+### When the input is submitted, text area should get emptied.
+
+- make shure first that the text area have some text
+- the update
+- The code below will explain.
+```js
+it('when form is submitted, text area get empied',()=>{
+  //make shure first that the text area have some text, to simulate use the text below
+  wrapped.find("textarea").simulate("change", {
+    target: { value: "new comment" }
+  });
+  //Update the fake value
+  wrapped.update();
+  // simulate the submit event, must be the same of html event, not onSubmit, that is the name of the prop.
+  wrapped.find("form").simulate("submit");
+  // Update the change, because the state changed
+  wrapped.update();
+  // Now make the assertion
+  expect(wrapped.find("textarea").prop("value")).toEqual("");
+})
+```
