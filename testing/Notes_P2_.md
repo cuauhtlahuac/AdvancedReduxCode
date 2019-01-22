@@ -13,3 +13,12 @@ export default function(state = [], action) {
   }
 }
 ```
+- Code below is a boiler plate to index redux file
+```js
+import { combineReducers } from "redux";
+import commentsReducers from "reducers/comments";
+
+export default combineReducers({
+  comments: commentsReducers
+});
+```
