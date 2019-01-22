@@ -256,3 +256,51 @@ it('when form is submitted, text area get empied',()=>{
   expect(wrapped.find("textarea").prop("value")).toEqual("");
 })
 ```
+
+### Describe Statements
+
+- Groups together certains sets.
+- describe function is used to wrap a block of tests
+- The first parameter is a description, the second is a call back function, that will contain inside the tests.
+- It will scape to the beforeEach scope, and at the same time you can write other beforeEach funcion. It only run before the all test inside of describe function.
+```js
+import React from "react";
+import { mount } from "enzyme";
+import CommentBox from "components/CommentBox";
+
+let wrapped;
+beforeEach(() => {
+  wrapped = mount(<CommentBox />);
+});
+afterEach(() => {
+  wrapped.unmount();
+});
+it("has a text area and a button", () => {
+  expect(wrapped.find("textarea").length).toEqual(1);
+  expect(wrapped.find("button").length).toEqual(1);
+});
+// Describe Function run a block of test
+describe("The text area", () => {
+  // This before each will run before the before before each...
+  beforeEach(() => {
+    it("has a text area that users can type in", () => {
+      wrapped.find("textarea").simulate("change", {
+        target: { value: "new comment" }
+      });
+      wrapped.update();
+      expect(wrapped.find("textarea").prop("value")).toEqual("new comment");
+    });
+    it("when form is submitted, text area get emptied", () => {
+      wrapped.find("textarea").simulate("change", {
+        target: { value: "new comment" }
+      });
+      wrapped.update();
+      wrapped.find("form").simulate("submit");
+      wrapped.update();
+      expect(wrapped.find("textarea").prop("value")).toEqual("");
+    });
+  });
+});
+```
+
+
