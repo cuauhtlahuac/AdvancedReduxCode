@@ -4,7 +4,7 @@
 
     create-react-app
     
-**It must send you the next message...**
+**It would send you the next message...**
 
     Please specify the project directory:
       create-react-app <project-directory>
